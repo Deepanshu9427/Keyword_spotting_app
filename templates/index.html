@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio Input Example</title>
+  <style>
+    body {
+      background-color:blue;
+      background-size: cover;
+      font-family: 'Arial', sans-serif;
+      color: #ffffff;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      color: #3498db;
+    }
+
+    form {
+      background-color: rgba(255, 255, 255, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px auto;
+      max-width: 400px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: #2ecc71;
+    }
+
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    input[type="submit"] {
+      background-color: #e74c3c;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #outputResult {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Audio Input Page</h1>
+
+  <form action="/predict" method="post" enctype="multipart/form-data">
+    <label for="audioInput">Select Audio:</label>
+    <input type="file" accept="audio/*" name="audio" id="audioInput" required />
+
+    <input type="submit" name="submit" value="Process Audio" />
+  </form>
+  <br><br>
+ {% if predicted_keyword %}
+   <h2>Results</h2>
+   <p>the word is = {{predicted_keyword}}
+ {% endif %}
+</body>
+</html>
